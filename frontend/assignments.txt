@@ -1,0 +1,29 @@
+Pages:
+
+    / - Register/Sign in
+    
+    /home - Home
+
+    /basename - Django API Home page (Component - NAVBAR)
+
+    /basename/account - Django API Account page (Component - NAVBAR)
+
+    /basename/add-data - Django API Add Park Data (Component - NAVBAR)
+
+    /basename/parks-visited - Django API Parks Visited Page (Component - NAVBAR, Park Card)
+
+    /parks - 3rd Party API Search for Park (Component - Park Search Bar)
+
+    /parks/{park-id} - 3rd Party API Park Data Page (Component - General Info, Buttons to fetch more info about park)
+
+Components:
+
+    NAVBAR For Django API
+
+    Park Card
+
+    Park Search Bar
+
+    General Info about 3rd party API Park data + Weather
+
+    Buttons to fetch more info on 3rd party API park data
