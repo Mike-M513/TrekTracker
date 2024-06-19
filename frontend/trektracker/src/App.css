@@ -24,3 +24,7 @@ button a {
   color: #fff;
   text-decoration: none
 }
+
+.dropdown-menu {
+  --bs-dropdown-link-active-bg: #4C3B4D;
+}
