@@ -22,5 +22,6 @@ urlpatterns = [
     path('users/', include('user.urls')),
     path('parks/', include('park.urls')),
     path('activities/', include('activity.urls')),
-    path('visits/', include('visit.urls'))
+    path('visits/', include('visit.urls')),
+    path('natl-parks/', include('national_parks.urls'))
 ]
