@@ -1,21 +1,22 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './pages/Home'
-import Trakker from './pages/Trakker';
-import Navigation from './components/Navigation'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css'
+// src/App.jsx
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { AuthProvider } from './UserAuthContext';
+import UserLogin from './components/UserLogin';
+import UserRegister from './components/UserRegister';
+import UserDashboard from './components/UserDashboard';
 
 function App() {
-
   return (
-    <BrowserRouter>
-      <Navigation />
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/trakker" element={<Trakker />} />
-      </Routes>
-    </BrowserRouter>
-  )
+    <Router>
+      <AuthProvider>
+        <Routes>
+          <Route path="/login" element={<UserLogin />} />
+          <Route path="/register" element={<UserRegister />} />
+          <Route path="/dashboard" element={<UserDashboard />} />
+        </Routes>
+      </AuthProvider>
+    </Router>
+  );
 }
 
-export default App
+export default App;
