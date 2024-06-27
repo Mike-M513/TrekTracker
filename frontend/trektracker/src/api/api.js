@@ -8,7 +8,7 @@ async function basicFetch(url, payload) {
     const payload = {
       method: "GET",
       headers: {
-        "Authorization": `Token 1600556d9e49ea476fe25aabfa4c7ceceab601e8`
+        "Authorization": `Token be220f200d9e29329d0e19be5a15b9fd7cdaeac8`
       }  }
     const body = await basicFetch(`http://localhost:8000/natl-parks/${parkCode}`, payload)
     return body
@@ -18,7 +18,7 @@ async function basicFetch(url, payload) {
     const payload = {
       method: "GET",
       headers: {
-        "Authorization": `Token 1600556d9e49ea476fe25aabfa4c7ceceab601e8`
+        "Authorization": `Token be220f200d9e29329d0e19be5a15b9fd7cdaeac8`
       }
     }
     const body = await basicFetch("http://localhost:8000/parks/parks/", payload)
@@ -29,7 +29,7 @@ async function basicFetch(url, payload) {
     const payload = {
       method: "GET",
       headers: {
-        "Authorization": `Token 1600556d9e49ea476fe25aabfa4c7ceceab601e8`
+        "Authorization": `Token be220f200d9e29329d0e19be5a15b9fd7cdaeac8`
       }  }
     const body = await basicFetch(`http://localhost:8000/natl-parks/alerts/${parkCode}`, payload)
     return body
