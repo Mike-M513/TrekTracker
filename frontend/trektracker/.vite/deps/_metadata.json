@@ -5,4 +5,84 @@
   "browserHash": "14c4a6e6",
   "optimized": {},
   "chunks": {}
+  "hash": "dea2bc41",
+  "configHash": "c12b17d5",
+  "lockfileHash": "3e25087b",
+  "browserHash": "350377f3",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "2339d754",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "acd1bdf8",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "e60912d1",
+      "needsInterop": false
+    },
+    "react-bootstrap/esm/Button": {
+      "src": "../../node_modules/react-bootstrap/esm/Button.js",
+      "file": "react-bootstrap_esm_Button.js",
+      "fileHash": "60f8f704",
+      "needsInterop": false
+    },
+    "react-bootstrap/Container": {
+      "src": "../../node_modules/react-bootstrap/esm/Container.js",
+      "file": "react-bootstrap_Container.js",
+      "fileHash": "4c8cab63",
+      "needsInterop": false
+    },
+    "react-bootstrap/NavDropdown": {
+      "src": "../../node_modules/react-bootstrap/esm/NavDropdown.js",
+      "file": "react-bootstrap_NavDropdown.js",
+      "fileHash": "9c2d077a",
+      "needsInterop": false
+    },
+    "react-bootstrap/Nav": {
+      "src": "../../node_modules/react-bootstrap/esm/Nav.js",
+      "file": "react-bootstrap_Nav.js",
+      "fileHash": "726e9b04",
+      "needsInterop": false
+    },
+    "react-bootstrap/Navbar": {
+      "src": "../../node_modules/react-bootstrap/esm/Navbar.js",
+      "file": "react-bootstrap_Navbar.js",
+      "fileHash": "7a400a09",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-Y3VZ7Y5E": {
+      "file": "chunk-Y3VZ7Y5E.js"
+    },
+    "chunk-VSRW3YJQ": {
+      "file": "chunk-VSRW3YJQ.js"
+    },
+    "chunk-ZRSV7U66": {
+      "file": "chunk-ZRSV7U66.js"
+    },
+    "chunk-QPG7G3M7": {
+      "file": "chunk-QPG7G3M7.js"
+    },
+    "chunk-OUCX3FTR": {
+      "file": "chunk-OUCX3FTR.js"
+    },
+    "chunk-YTSVGGH3": {
+      "file": "chunk-YTSVGGH3.js"
+    },
+    "chunk-CPEFJ7VC": {
+      "file": "chunk-CPEFJ7VC.js"
+    },
+    "chunk-UTEJFLXC": {
+      "file": "chunk-UTEJFLXC.js"
+    }
+  }
 }

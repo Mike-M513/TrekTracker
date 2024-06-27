@@ -24,3 +24,39 @@ button a {
   color: #fff;
   text-decoration: none
 }
+
+.hero-section {
+  height: 600px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #89B6A5;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  text-align: center;
+  width: 75%;
+}
+
+.overview-section, .alerts-section {
+  padding: 20px;
+  margin: 10px 0;
+}
+
+.activities-section ul, .events-section ul, .wildlife-section ul, .maps-section ul, .alerts-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.activities-section li, .events-section li, .wildlife-section li, .maps-section li, .alerts-section li {
+  margin: 10px 0;
+}
+.dropdown-menu {
+  --bs-dropdown-link-active-bg: #4C3B4D;
+}
