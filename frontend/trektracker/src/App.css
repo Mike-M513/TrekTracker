@@ -57,3 +57,6 @@ button a {
 .activities-section li, .events-section li, .wildlife-section li, .maps-section li, .alerts-section li {
   margin: 10px 0;
 }
+.dropdown-menu {
+  --bs-dropdown-link-active-bg: #4C3B4D;
+}
