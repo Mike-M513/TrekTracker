@@ -1,0 +1,87 @@
+/* AcctPage.css */
+
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.acct-page {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.acct-page h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.acct-page div {
+    margin-bottom: 20px;
+}
+
+.acct-page p {
+    margin-bottom: 10px;
+}
+
+.acct-page p strong {
+    display: inline-block;
+    width: 100px;
+    font-weight: bold;
+}
+
+.acct-page input[type="email"],
+.acct-page input[type="password"] {
+    width: calc(100% - 120px);
+    padding: 10px;
+    margin-left: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.acct-page button {
+    padding: 5px 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.acct-page button:hover {
+    background-color: #0056b3;
+}
+
+.acct-page .delete-confirmation {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.acct-page .delete-confirmation p {
+    margin-bottom: 20px;
+}
+
+.acct-page .delete-confirmation button {
+    margin-right: 10px;
+}
+
+.acct-page svg {
+    cursor: pointer;
+    vertical-align: middle;
+}

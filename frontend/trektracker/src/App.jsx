@@ -4,6 +4,7 @@ import Tracker from './pages/Tracker';
 import Navigation from './components/Navigation'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
+import AcctPage from "./pages/AcctPage";
 import ExploreParks from "./pages/ExploreParks";
 import ParkPage from "./pages/ParkPage";
 
@@ -13,6 +14,7 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/home" element={<Home />} />
+        <Route path="/account" element={<AcctPage />} />
         <Route path="/tracker" element={<Tracker />} />
         <Route path="/explore" element={<ExploreParks />} />
         <Route path="/explore/:parkCode" element={<ParkPage />} />
