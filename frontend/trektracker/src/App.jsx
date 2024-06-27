@@ -4,18 +4,21 @@ import Tracker from './pages/Tracker';
 import Navigation from './components/Navigation'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
+import ExploreParks from "./pages/ExploreParks";
+import ParkPage from "./pages/ParkPage";
 
 function App() {
-
   return (
     <BrowserRouter>
       <Navigation />
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/tracker" element={<Tracker />} />
+        <Route path="/explore" element={<ExploreParks />} />
+        <Route path="/explore/:parkCode" element={<ParkPage />} />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

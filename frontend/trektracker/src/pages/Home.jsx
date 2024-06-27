@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
 
 export default function Home() {
-
     return (
         <>
             <div className="container">

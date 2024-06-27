@@ -28,7 +28,7 @@ export default function Navigation() {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link as={Link} to="/home">Explore</Nav.Link>
+            <Nav.Link as={Link} to="/explore">Explore</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

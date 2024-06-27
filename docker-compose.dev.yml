@@ -17,13 +17,13 @@ services:
       - DB_PASS=$POSTGRES_PASSWORD
     depends_on:
       - db
-  nginx:
-    build: 
-      context: .
-      dockerfile: ./webserver/Dockerfile
-    restart: always
-    ports:
-      - "80:80"
+  # nginx:
+  #   build: 
+  #     context: .
+  #     dockerfile: ./webserver/Dockerfile
+  #   restart: always
+  #   ports:
+  #     - "80:80"
   db:
     image: postgres:15
     volumes:
