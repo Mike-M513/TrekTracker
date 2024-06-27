@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Trakker from "./pages/Trakker";
+import Home from './pages/Home'
+import Tracker from './pages/Tracker';
+import Navigation from './components/Navigation'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css'
 import ExploreParks from "./pages/ExploreParks";
 import ParkPage from "./pages/ParkPage";
-import Navigation from "./components/Navigation";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/home" element={<Home />} />
-        <Route path="/trakker" element={<Trakker />} />
+        <Route path="/tracker" element={<Tracker />} />
         <Route path="/explore" element={<ExploreParks />} />
         <Route path="/explore/:parkCode" element={<ParkPage />} />
       </Routes>

@@ -1,13 +1,13 @@
 import ListVisitedParks from "../components/ListVisitedParks";
 
-export default function Trakker() {
+export default function Tracker() {
 
     return (
         <>
             <div className="container">
                 <div className="row">
                     <div className="col">
-                        <h1>Trakker</h1>
+                        <h1>Tracker</h1>
                         <h2>User Activity</h2>
                     </div>
                 </div>
