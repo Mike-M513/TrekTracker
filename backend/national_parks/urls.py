@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import AllParks
+from .views import ParkDetail, ParkAlerts
 
 urlpatterns = [
-    path('', AllParks.as_view(), name="all_parks"),
+    path('<str:park_code>', ParkDetail.as_view(), name="park_detail"),
+    path('alerts/<str:park_code>', ParkAlerts.as_view(), name="park_alerts")
 ]
