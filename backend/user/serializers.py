@@ -7,27 +7,23 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
-        fields = ['username', 'password']
-        # extra_kwargs = {'password': {'write_only': True}}
+        fields = ['username', 'first_name', 'last_name', 'email', 'password' ]
+        extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         username = validated_data['username']
+        first_name = validated_data['first_name']
+        last_name = validated_data['last_name']
+        email = validated_data['email']
         password = validated_data['password']
 
-        user = CustomUser.objects.create_user(username=username, password=password)
+        user = CustomUser.objects.create_user(username=username, first_name=first_name, last_name=last_name, email=email, password=password)
 
         user.save()
         return user
     
 class UpdatePasswordSerializer(serializers.Serializer):
-    old_password = serializers.Charfield(required= True)
-    new_password = serializers.Charfield(required= True)
-
-    def validate_old_password(self, value):
-        user = self.context['request'].user
-        if not user.check_password(value):
-            raise serializers.ValidationError('Current password is incorrect')
-        return value
+    password = serializers.CharField(required= True)
     
     def validate_new_password(self, value):
         user = self.context['request'].user

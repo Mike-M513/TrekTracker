@@ -1,55 +1,82 @@
 import React, { useState, useEffect } from 'react';
-// import "./AcctPage.css";
+import "./AcctPage.css";
 
 
-// const getUserData = async (token) => {
-//     try {
-//         const response = await fetch("http://127.0.0.1:8000/users/user/", {
-//             headers: {
-//                 'Authorization': `Token ${token}`, // Include the token in the request headers
-//                 'Content-Type': 'application/json'
-//             }
-//         });
-//         if (!response.ok) {
-//             throw new Error("Network response was not ok");
-//         }
-//         const data = await response.json();
-//         return data;
-//     } catch (error) {
-//         console.error("Failed to fetch user data:", error);
-//         return null;
-//     }
-// };
+const getToken = () => {
+    return localStorage.getItem('token');
+}
+
+
+//Fetch User Data
+const getUserData = async () => {
+    const token = getToken()
+    try {
+        const response = await fetch("http://127.0.0.1:8000/users/user/", {
+            headers: {
+                'Authorization': `${token}`, 
+                'Content-Type': 'application/json'
+            }
+        });
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Failed to fetch user data:", error);
+        return null;
+    }
+};
 
 // Update Password
-// const updatePassword = async (token, oldPassword, newPassword) => {
-//     try {
-//         const response = await fetch("http://127.0.0.1:8000/users/update-password/", {
-//             method: 'PATCH',
-//             headers: {
-//                 'Authorization': `Token ${token}`,
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify({ old_password: oldPassword, new_password: newPassword })
-//         });
-//         if (!response.ok) {
-//             throw new Error("Failed to update password");
-//         }
-//     } catch (error) {
-//         console.error("Failed to update password:", error);
-//     }
-// };
+const updatePassword = async (newPassword) => {
+    const token = getToken(); 
+    try {
+        const response = await fetch("http://127.0.0.1:8000/users/update-password/", {
+            method: 'PUT',
+            headers: {
+                'Authorization': `${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ password: newPassword })
+        });
+        if (!response.ok) {
+            throw new Error("Failed to update password");
+        }
+    } catch (error) {
+        console.error("Failed to update password:", error);
+    }
+};
+
+// Delete User
+const deleteUser = async() => {
+    const token = getToken();
+    try {
+        const response = await fetch("http://127.0.0.1:8000/users/delete-user/", {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Token ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        if (!response.ok) {
+            throw new Error("Failed to delete user account");
+        }
+    } catch (error) {
+        console.error("Failed to delete user account:", error);
+    }
+};
 
 // Mocking fetch for testing purposes
-const getUserData = async () => {
-    return {
-        first_name: "John",
-        last_name: "Doe",
-        username: "username",
-        email: "john.doe@example.com",
-        password: "password"
-    };
-};
+// const getUserData = async () => {
+//     return {
+//         first_name: "John",
+//         last_name: "Doe",
+//         username: "username",
+//         email: "john.doe@example.com",
+//         password: "password"
+//     };
+// };
 
 export default function AcctPage() {
     const [user, setUser] = useState(null);
@@ -58,10 +85,9 @@ export default function AcctPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [originalEmail, setOriginalEmail] = useState('');
-    const [originalPassword, setOriginalPassword] = useState('');
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
-    const token = ''; //need to add token retrieval method
+    
     useEffect(() => {
         async function fetchUserData() {
             const data = await getUserData();
@@ -70,7 +96,6 @@ export default function AcctPage() {
                 setEmail(data.email);
                 setPassword(data.password);
                 setOriginalEmail(data.email);
-                setOriginalPassword(data.password);
             }
         }
         fetchUserData();
@@ -92,17 +117,14 @@ export default function AcctPage() {
         setPassword(e.target.value);
     };
 
-    const handleOldPasswordChange = (e) => {
-        setOldPassword(e.target.value);
-    };
-
     const handleEmailSave = () => {
         setIsEditingEmail(false);
         setOriginalEmail(email);
     };
 
     const handlePasswordSave = async () => {
-        await updatePassword(token, oldPassword, password);
+        await updatePassword(password);
+        alert('Password has been updated')
         setIsEditingPassword(false);
     };
 
@@ -112,8 +134,7 @@ export default function AcctPage() {
     };
 
     const handlePasswordCancel = () => {
-        setOldPassword(''); 
-        setPassword(''); 
+        setPassword(password); 
         setIsEditingPassword(false);
     };
 
@@ -121,7 +142,8 @@ export default function AcctPage() {
         setShowDeleteConfirm(true);
     };
 
-    const handleConfirmDelete = () => {
+    const handleConfirmDelete = async () => {
+        await deleteUser();
         alert('Profile Deleted');
         setShowDeleteConfirm(false);
     };
@@ -166,12 +188,6 @@ export default function AcctPage() {
                                 <>
                                     <input
                                         type='password'
-                                        placeholder='Old Password'
-                                        value={oldPassword}
-                                        onChange={handleOldPasswordChange}
-                                    />
-                                    <input
-                                        type='password'
                                         value={password}
                                         onChange={handlePasswordChange}
                                     />
@@ -180,7 +196,7 @@ export default function AcctPage() {
                                 </>
                             ) : (
                                 <>
-                                    {"*".repeat(password.length)}
+                                    {/* {"*".repeat(password.length)} */}
                                     <svg 
                                         xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil" viewBox="0 0 16 16" onClick={handlePasswordEditClick} style={{cursor: 'pointer', marginLeft: '8px'}}>
                                         <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
