@@ -11,25 +11,34 @@ const ExploreParks = () => {
     setText(selection);
   };
   return (
-    <>
-      <div className="d-flex vh-100">
-        <div className="m-auto">
-          <div className="box p-4 bg-light border rounded">
-            <AutoCompleteSearch handleParkChoice={handleParkChoice} />
+    <div className="trekbody">
+      <div className="container">
+        <div className="row justify-content-center">
+          <div className="col">
+            <h1>Explore national parks</h1>
           </div>
-          <div>
-            <Link to={`/explore/${text.park_code}`}>
-              <Button
-                type="button"
-                className="btn btn-primary btn-lg btn-block"
-              >
-                Search
-              </Button>
-            </Link>
+        </div>
+        <div className="row">
+          <div className="d-flex">
+            <div className="m-auto">
+              <div className="box p-4 bg-light border rounded">
+                <AutoCompleteSearch handleParkChoice={handleParkChoice} />
+              </div>
+              <div>
+                <Link to={`/explore/${text.park_code}`}>
+                  <Button
+                    type="button"
+                    className="btn btn-primary btn-lg btn-block"
+                  >
+                    Search
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

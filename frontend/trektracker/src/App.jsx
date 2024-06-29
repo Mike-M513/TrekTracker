@@ -7,15 +7,17 @@ import './App.css'
 import AcctPage from "./pages/AcctPage";
 import ExploreParks from "./pages/ExploreParks";
 import ParkPage from "./pages/ParkPage";
+import AddParkVisit from "./pages/AddParkVisit";
 
 function App() {
   return (
     <BrowserRouter>
       <Navigation />
       <Routes>
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/account" element={<AcctPage />} />
         <Route path="/tracker" element={<Tracker />} />
+        <Route path="/addvisit" element={<AddParkVisit />} />
         <Route path="/explore" element={<ExploreParks />} />
         <Route path="/explore/:parkCode" element={<ParkPage />} />
       </Routes>
