@@ -1,3 +1,7 @@
+.trekbody {
+  padding-top: 2rem;
+}
+
 .treknav {
     background-color: #89B6A5 !important;
 }
@@ -23,6 +27,25 @@
 button a {
   color: #fff;
   text-decoration: none
+}
+
+.visitedParkCard {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.editParkCardButton {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.editParkCardButton svg {
+  position: absolute;
+  top: 3px;
+  right: 5px;
 }
 
 .hero-section {
@@ -59,4 +82,8 @@ button a {
 }
 .dropdown-menu {
   --bs-dropdown-link-active-bg: #4C3B4D;
+}
+
+.MuiCircularProgress-svg {
+  color: #4C3B4D;
 }

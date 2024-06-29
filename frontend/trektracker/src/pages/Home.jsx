@@ -3,14 +3,14 @@ import Button from "react-bootstrap/esm/Button";
 
 export default function Home() {
   return (
-    <>
+    <div className="trekbody">
       <div className="container">
-        <div className="row align-items-center">
+        <div className="row">
           <div className="col">
             <h1>Home</h1>
           </div>
         </div>
-        <div className="row align-items-center">
+        <div className="row">
           <div className="col">
             <Link to="/tracker">
               <Button
@@ -62,6 +62,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
