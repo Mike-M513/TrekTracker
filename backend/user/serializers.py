@@ -2,13 +2,17 @@ from rest_framework import serializers
 from .models import CustomUser
 from django.core.exceptions import ValidationError
 from django.contrib.auth.password_validation import validate_password
+from rest_framework.validators import UniqueValidator
 
 class CustomUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CustomUser
         fields = ['username', 'first_name', 'last_name', 'email', 'password' ]
-        extra_kwargs = {'password': {'write_only': True}}
+        extra_kwargs = {
+            # 'password': {'write_only': True},
+            'email': {'validators': [UniqueValidator(queryset=CustomUser.objects.all())]},
+        }
 
     def create(self, validated_data):
         username = validated_data['username']
@@ -33,5 +37,17 @@ class UpdatePasswordSerializer(serializers.Serializer):
             validate_password(value, user)
         except ValidationError as e:
             raise serializers.ValidationError(e.messages)
+        
+        return value
+    
+class UpdateEmailSerializer(serializers.Serializer):
+    email = serializers.EmailField(required = True)
+
+    def validate_new_email(self, value):
+        user = self.context['request'].user
+        if user.email == value:
+            raise serializers.ValidationError('New email cannot be the same as the current email.')
+        if CustomUser.objects.filter(email = value).exits():
+            raise serializers.ValidationError('This email is already in use.')
         
         return value

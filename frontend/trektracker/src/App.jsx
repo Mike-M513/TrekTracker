@@ -5,6 +5,7 @@ import Navigation from './components/Navigation'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import AcctPage from "./pages/AcctPage";
+import DeletionSuccess from "./pages/DeletionSuccess";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/trakker" element={<Trakker />} />
         <Route path="/account" element={<AcctPage />} />
+        <Route path="/deletion-success" element={<DeletionSuccess />} />
       </Routes>
     </BrowserRouter>
   )

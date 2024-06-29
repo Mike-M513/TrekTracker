@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./AcctPage.css";
 
 
 const getToken = () => {
-    return localStorage.getItem('token');
+    // return localStorage.getItem('token');
+    return "Token 573b9ca2a501e2f79e64fbb30cc334e4a968fff0"
 }
 
 
@@ -48,6 +50,26 @@ const updatePassword = async (newPassword) => {
     }
 };
 
+//Update Email
+const updateEmail = async (newEmail) => {
+    const token = getToken();
+    try {
+        const response = await fetch("http://127.0.0.1:8000/users/update-email/", {
+            method: 'PUT',
+            headers: {
+                'Authorization': `${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: newEmail })
+        });
+        if (!response.ok) {
+            throw new Error("Failed to update email");
+        }
+    } catch (error) {
+        console.error("Failed to update email:", error);
+    }
+};
+
 // Delete User
 const deleteUser = async() => {
     const token = getToken();
@@ -55,7 +77,7 @@ const deleteUser = async() => {
         const response = await fetch("http://127.0.0.1:8000/users/delete-user/", {
             method: 'DELETE',
             headers: {
-                'Authorization': `Token ${token}`,
+                'Authorization': `${token}`,
                 'Content-Type': 'application/json'
             }
         });
@@ -86,6 +108,7 @@ export default function AcctPage() {
     const [password, setPassword] = useState('');
     const [originalEmail, setOriginalEmail] = useState('');
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+    const navigate = useNavigate();
 
     
     useEffect(() => {
@@ -117,7 +140,9 @@ export default function AcctPage() {
         setPassword(e.target.value);
     };
 
-    const handleEmailSave = () => {
+    const handleEmailSave = async () => {
+        await updateEmail(email);
+        alert('Email has been updated')
         setIsEditingEmail(false);
         setOriginalEmail(email);
     };
@@ -146,11 +171,15 @@ export default function AcctPage() {
         await deleteUser();
         alert('Profile Deleted');
         setShowDeleteConfirm(false);
+        navigate('/deletion-success');
     };
 
     const handleCancelDelete = () => {
         setShowDeleteConfirm(false);
     };
+
+    const maxAsteriks = 8;
+    const displayedPassword = "*".repeat(Math.min(user?.password.length || 0, maxAsteriks))
 
     return (
         <main className="acct-page">
@@ -197,6 +226,7 @@ export default function AcctPage() {
                             ) : (
                                 <>
                                     {/* {"*".repeat(password.length)} */}
+                                    {displayedPassword}
                                     <svg 
                                         xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil" viewBox="0 0 16 16" onClick={handlePasswordEditClick} style={{cursor: 'pointer', marginLeft: '8px'}}>
                                         <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>

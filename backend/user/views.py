@@ -1,5 +1,5 @@
 from rest_framework.generics import CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
-from .serializers import CustomUserSerializer, UpdatePasswordSerializer
+from .serializers import CustomUserSerializer, UpdatePasswordSerializer, UpdateEmailSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from .models import CustomUser
 
@@ -35,6 +35,18 @@ class UpdatePassword(UpdateAPIView):
     def perform_update(self, serializer):
         user = self.get_object()
         user.set_password(serializer.validated_data['password'])
+        user.save()
+
+class UpdateEmail(UpdateAPIView):
+    serializer_class = UpdateEmailSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user
+    
+    def perform_update(self, serializer):
+        user = self.get_object()
+        user.email = serializer.validated_data['email']
         user.save()
 
 class DeleteUser(DestroyAPIView):
