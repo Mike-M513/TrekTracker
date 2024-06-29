@@ -44,7 +44,7 @@ button a {
   width: 75%;
 }
 
-.overview-section, .alerts-section {
+.overview-section, .alerts-section, .weather-section {
   padding: 20px;
   margin: 10px 0;
 }
