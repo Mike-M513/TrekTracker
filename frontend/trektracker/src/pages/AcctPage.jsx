@@ -3,7 +3,7 @@ import "./AcctPage.css";
 
 const getToken = () => {
   // return localStorage.getItem('token');
-  return "Token be220f200d9e29329d0e19be5a15b9fd7cdaeac8";
+  return "Token 92fc72a645dfe7f1f908c635c0edb08e151a9c0f";
 };
 
 //Fetch User Data
