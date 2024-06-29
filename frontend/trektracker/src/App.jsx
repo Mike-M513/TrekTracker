@@ -8,6 +8,7 @@ import AcctPage from "./pages/AcctPage";
 import ExploreParks from "./pages/ExploreParks";
 import ParkPage from "./pages/ParkPage";
 import AddParkVisit from "./pages/AddParkVisit";
+import EditParkVisit from "./pages/EditParkVisit";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/account" element={<AcctPage />} />
         <Route path="/tracker" element={<Tracker />} />
         <Route path="/addvisit" element={<AddParkVisit />} />
+        <Route path="/editvisit" element={<EditParkVisit />} />
         <Route path="/explore" element={<ExploreParks />} />
         <Route path="/explore/:parkCode" element={<ParkPage />} />
       </Routes>
