@@ -27,8 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-REFERRER_POLICY = 'strict-origin-when-cross-origin'
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,12 +42,12 @@ INSTALLED_APPS = [
     'park',
     'activity',
     'visit',
-    'corsheaders',
+    # 'corsheaders',
 ]
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    # 'corsheaders.middleware.CorsMiddleware',
+    # 'django.middleware.common.CommonMiddleware',
     'trektracker.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -147,21 +145,3 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'user.CustomUser'
-
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
-]
-
-CORS_ALLOW_HEADERS = [  
-    'Authorization',
-    'Content-Type'
-]
-
-CORS_ALLOWED_METHODS = [
-    'GET',
-    'POST',
-    'PUT',
-    'PATCH',
-    'DELETE',
-    'OPTIONS'
-]

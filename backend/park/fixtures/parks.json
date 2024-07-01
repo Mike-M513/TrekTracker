@@ -1,0 +1,442 @@
+[
+  {
+    "model": "park.Park",
+    "pk": 0,
+    "fields": { "park_name": "Acadia National Park", "park_code": "acad" }
+  },
+  {
+    "model": "park.Park",
+    "pk": 1,
+    "fields": { "park_name": "Arches National Park", "park_code": "arch" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 2,
+    "fields": { "park_name": "Badlands National Park", "park_code": "badl" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 3,
+    "fields": { "park_name": "Big Bend National Park", "park_code": "bibe" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 4,
+    "fields": { "park_name": "Biscayne National Park", "park_code": "bisc" }
+  },
+  {
+    "model": "park.Park",
+    "pk": 5,
+    "fields": {
+      "park_name": "Black Canyon Of The Gunnison National Park",
+      "park_code": "blca"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 6,
+    "fields": { "park_name": "Bryce Canyon National Park", "park_code": "brca" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 7,
+    "fields": { "park_name": "Canyonlands National Park", "park_code": "cany" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 8,
+    "fields": { "park_name": "Capitol Reef National Park", "park_code": "care" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 9,
+    "fields": {
+      "park_name": "Carlsbad Caverns National Park",
+      "park_code": "cave"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 10,
+    "fields": {
+      "park_name": "Channel Islands National Park",
+      "park_code": "chis"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 11,
+    "fields": { "park_name": "Congaree National Park", "park_code": "cong" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 12,
+    "fields": { "park_name": "Crater Lake National Park", "park_code": "crla" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 13,
+    "fields": {
+      "park_name": "Cuyahoga Valley National Park",
+      "park_code": "cuva"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 14,
+    "fields": { "park_name": "Death Valley National Park", "park_code": "deva" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 15,
+    "fields": {
+      "park_name": "Denali National Park & Preserve",
+      "park_code": "dena"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 16,
+    "fields": { "park_name": "Dry Tortugas National Park", "park_code": "drto" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 17,
+    "fields": { "park_name": "Everglades National Park", "park_code": "ever" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 18,
+    "fields": {
+      "park_name": "Gates Of The Arctic National Park & Preserve",
+      "park_code": "gaar"
+    }
+  },
+  {
+    "model": "park.Park",
+    "pk": 19,
+    "fields": { "park_name": "Gateway Arch National Park", "park_code": "jeff" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 20,
+    "fields": {
+      "park_name": "Glacier Bay National Park & Preserve",
+      "park_code": "glba"
+    }
+  },
+  {
+    "model": "park.Park",
+    "pk": 21,
+    "fields": { "park_name": "Glacier National Park", "park_code": "glac" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 22,
+    "fields": { "park_name": "Grand Canyon National Park", "park_code": "grca" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 23,
+    "fields": { "park_name": "Grand Teton National Park", "park_code": "grte" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 24,
+    "fields": { "park_name": "Great Basin National Park", "park_code": "grba" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 25,
+    "fields": {
+      "park_name": "Great Sand Dunes National Park & Preserve",
+      "park_code": "grsa"
+    }
+  },
+  {
+    "model": "park.Park",
+    "pk": 26,
+    "fields": {
+      "park_name": "Great Smoky Mountains National Park",
+      "park_code": "grsm"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 27,
+    "fields": {
+      "park_name": "Guadalupe Mountains National Park",
+      "park_code": "gumo"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 28,
+    "fields": { "park_name": "Haleakalā National Park", "park_code": "hale" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 29,
+    "fields": {
+      "park_name": "Hawai'i Volcanoes National Park",
+      "park_code": "havo"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 30,
+    "fields": { "park_name": "Hot Springs National Park", "park_code": "hosp" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 31,
+    "fields": {
+      "park_name": "Indiana Dunes National Park",
+      "park_code": "indu"
+    }
+  },
+  {
+    "model": "park.Park",
+    "pk": 32,
+    "fields": { "park_name": "Isle Royale National Park", "park_code": "isro" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 33,
+    "fields": { "park_name": "Joshua Tree National Park", "park_code": "jotr" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 34,
+    "fields": {
+      "park_name": "Katmai National Park & Preserve",
+      "park_code": "katm"
+    }
+  },
+  {
+    "model": "park.Park",
+    "pk": 35,
+    "fields": { "park_name": "Kenai Fjords National Park", "park_code": "kefj" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 36,
+    "fields": { "park_name": "Kobuk Valley National Park", "park_code": "kova" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 37,
+    "fields": {
+      "park_name": "Lake Clark National Park & Preserve",
+      "park_code": "lacl"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 38,
+    "fields": {
+      "park_name": "Lassen Volcanic National Park",
+      "park_code": "lavo"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 39,
+    "fields": { "park_name": "Mammoth Cave National Park", "park_code": "maca" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 40,
+    "fields": { "park_name": "Mesa Verde National Park", "park_code": "meve" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 41,
+    "fields": {
+      "park_name": "Mount Rainier National Park",
+      "park_code": "mora"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 42,
+    "fields": {
+      "park_name": "National Park of American Samoa",
+      "park_code": "npsa"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 43,
+    "fields": {
+      "park_name": "New River Gorge National Park & Preserve",
+      "park_code": "neri"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 44,
+    "fields": {
+      "park_name": "North Cascades National Park",
+      "park_code": "noca"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 45,
+    "fields": { "park_name": "Olympic National Park", "park_code": "olym" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 46,
+    "fields": {
+      "park_name": "Petrified Forest National Park",
+      "park_code": "pefo"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 47,
+    "fields": { "park_name": "Pinnacles National Park", "park_code": "pinn" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 48,
+    "fields": {
+      "park_name": "Redwood National and State Parks",
+      "park_code": "redw"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 49,
+    "fields": {
+      "park_name": "Rocky Mountain National Park",
+      "park_code": "romo"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 50,
+    "fields": { "park_name": "Saguaro National Park", "park_code": "sagu" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 51,
+    "fields": {
+      "park_name": "Sequoia & Kings Canyon National Parks",
+      "park_code": "seki"
+    }
+  },
+  {
+    "model": "park.Park",
+    "pk": 52,
+    "fields": { "park_name": "Shenandoah National Park", "park_code": "shen" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 53,
+    "fields": {
+      "park_name": "Theodore Roosevelt National Park",
+      "park_code": "thro"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 54,
+    "fields": {
+      "park_name": "Virgin Islands National Park",
+      "park_code": "viis"
+    }
+  },
+  {
+    "model": "park.Park",
+    "pk": 55,
+    "fields": { "park_name": "Voyageurs National Park", "park_code": "voya" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 56,
+    "fields": { "park_name": "White Sands National Park", "park_code": "whsa" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 57,
+    "fields": { "park_name": "Wind Cave National Park", "park_code": "wica" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 58,
+    "fields": {
+      "park_name": "Wrangell - St Elias National Park & Preserve",
+      "park_code": "wrst"
+    }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 59,
+    "fields": { "park_name": "Yellowstone National Park", "park_code": "yell" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 60,
+    "fields": { "park_name": "Yosemite National Park", "park_code": "yose" }
+  },
+
+  {
+    "model": "park.Park",
+    "pk": 61,
+    "fields": { "park_name": "Zion National Park", "park_code": "zion" }
+  }
+]
