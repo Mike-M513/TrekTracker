@@ -1,3 +1,5 @@
+const token = localStorage.getItem("token")
+
 async function basicFetch(url, payload) {
     const res = await fetch(url, payload)
     const body = await res.json()
@@ -8,7 +10,7 @@ async function basicFetch(url, payload) {
     const payload = {
       method: "GET",
       headers: {
-        "Authorization": `Token 92fc72a645dfe7f1f908c635c0edb08e151a9c0f`
+        "Authorization": `Token ${token}`
       }  }
     const body = await basicFetch(`http://localhost:8000/natl-parks/${parkCode}`, payload)
     return body
@@ -18,7 +20,7 @@ async function basicFetch(url, payload) {
     const payload = {
       method: "GET",
       headers: {
-        "Authorization": `Token 92fc72a645dfe7f1f908c635c0edb08e151a9c0f`
+        "Authorization": `Token ${token}`
       }
     }
     const body = await basicFetch("http://localhost:8000/parks/parks/", payload)
@@ -29,7 +31,7 @@ async function basicFetch(url, payload) {
     const payload = {
       method: "GET",
       headers: {
-        "Authorization": `Token 92fc72a645dfe7f1f908c635c0edb08e151a9c0f`
+        "Authorization": `Token ${token}`
       }  }
     const body = await basicFetch(`http://localhost:8000/natl-parks/alerts/${parkCode}`, payload)
     return body

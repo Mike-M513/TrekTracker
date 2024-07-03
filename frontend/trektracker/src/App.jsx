@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Tracker from "./pages/Tracker";
@@ -18,12 +18,26 @@ import UserContext from "./context/UserContext";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [token, setToken] = useState();
+  const [token, setToken] = useState(null);
 
   const handleSetToken = (userToken) => {
+    console.log(userToken);
     setToken(userToken);
-    setIsAuthenticated(true);
   };
+
+  // const setLocalStorage = () => {
+  //   localStorage.setItem("token", token);
+  // };
+
+  useEffect(() => {
+    console.log("USING THE USE EFFECT");
+    console.log(token);
+    if (localStorage.getItem("token")) {
+      setIsAuthenticated(true);
+      // setLocalStorage();
+    }
+    // setIsAuthenticated(true);
+  }, [token]);
 
   return (
     <>

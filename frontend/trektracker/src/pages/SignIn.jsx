@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Navigate } from "react-router-dom";
+import { Navigate, json } from "react-router-dom";
 
 export default function SignIn({ handleSetToken }) {
   const [username, setUsername] = useState();
@@ -11,12 +11,14 @@ export default function SignIn({ handleSetToken }) {
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     const userObj = {
       username: username,
       password: password,
     };
-    const token = fetchToken(userObj);
+    const token = await fetchToken(userObj);
+    localStorage.setItem("token", token);
+
     handleSetToken(token);
     setShouldRedirect(true);
   };
@@ -37,6 +39,7 @@ export default function SignIn({ handleSetToken }) {
   };
 
   if (shouldRedirect) {
+    // console.log(shouldRedirect);
     return <Navigate to="/" />;
   } else {
     return (

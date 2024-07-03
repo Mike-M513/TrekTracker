@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import "./AcctPage.css";
 
 const getToken = () => {
-  // return localStorage.getItem('token');
-  return "Token f793057c358e119059cb6ca536cd1085f70aeef2";
+  // return localStorage.getItem("token");
+  const token = localStorage.getItem("token");
+
+  return `Token ${token}`;
 };
 
 //Fetch User Data
