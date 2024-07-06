@@ -14,6 +14,7 @@ import EditParkVisit from "./pages/EditParkVisit";
 import RegisterSignIn from "./pages/RegisterSignIn";
 import Register from "./pages/Register";
 import SignIn from "./pages/SignIn";
+import SignOut from "./pages/SignOut";
 import UserContext from "./context/UserContext";
 
 function App() {
@@ -23,6 +24,12 @@ function App() {
   const handleSetToken = (userToken) => {
     console.log(userToken);
     setToken(userToken);
+  };
+
+  const handleSignOut = () => {
+    setToken(null);
+    setIsAuthenticated(false);
+    console.log(`SET IS AUTHENTUICATED ${isAuthenticated}`);
   };
 
   // const setLocalStorage = () => {
@@ -55,6 +62,10 @@ function App() {
               <Route path="/editvisit" element={<EditParkVisit />} />
               <Route path="/explore" element={<ExploreParks />} />
               <Route path="/explore/:parkCode" element={<ParkPage />} />
+              <Route
+                path="/sign-out"
+                element={<SignOut handleUserSignOut={handleSignOut} />}
+              />
             </Routes>
           </BrowserRouter>
         ) : (
