@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Toast from "react-bootstrap/Toast";
 
 export default function SignOut({ handleUserSignOut }) {
   const handleSignOut = () => {
