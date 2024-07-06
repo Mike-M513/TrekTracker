@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast, Slide} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./AcctPage.css";
 
 const getToken = () => {
@@ -144,14 +146,34 @@ export default function AcctPage() {
 
   const handleEmailSave = async () => {
     await updateEmail(email);
-    alert("Email has been updated");
+    toast.success('Email has been updated', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Slide,
+      });
     setIsEditingEmail(false);
     setOriginalEmail(email);
   };
 
   const handlePasswordSave = async () => {
     await updatePassword(password);
-    alert("Password has been updated");
+    toast.success('Password has been changed', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Slide       
+    });
     setIsEditingPassword(false);
   };
 
@@ -171,7 +193,17 @@ export default function AcctPage() {
 
   const handleConfirmDelete = async () => {
     await deleteUser();
-    alert("Profile Deleted");
+    toast.success('Profile Deleted', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Slide
+    });
     setShowDeleteConfirm(false);
     navigate("/deletion-success");
   };
@@ -187,6 +219,7 @@ export default function AcctPage() {
 
   return (
     <main className="acct-page">
+      <ToastContainer />
       {user ? (
         <>
           <h1>Account Information</h1>
