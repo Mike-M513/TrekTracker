@@ -15,6 +15,7 @@ class Migration(migrations.Migration):
             name='Activity',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('activity_name', models.CharField(max_length=50, unique=True)),
                 ('activity_code', models.CharField(max_length=50, unique=True)),
             ],
         ),
