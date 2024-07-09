@@ -15,4 +15,4 @@ docker-compose -f docker-compose.dev.yml up -d --build
 sleep 10 
 docker exec trektracker-api-1  python /src/manage.py makemigrations 
 docker exec trektracker-api-1  python /src/manage.py migrate
-docker exec trektracker-api-1  python /src/manage.py loaddata parks
+docker exec trektracker-api-1  python /src/manage.py loaddata parks activities
