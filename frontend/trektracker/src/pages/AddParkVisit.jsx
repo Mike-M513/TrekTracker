@@ -2,25 +2,35 @@ import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import AutoCompleteSearch from "../components/AutoCompleteSearch";
+import AutoCompleteActivities from "../components/AutoCompleteActivities";
+import { getParkData } from "../api/api";
 
 export default function AddParkVisit() {
-  const [park, setPark] = useState();
+  const [parkCode, setParkCode] = useState(null);
+  const [activityData, setActivityData] = useState([]);
   const [date, setDate] = useState();
-  const [activities, setActivities] = useState([]);
+  const [activities, setActivities] = useState(null);
+  const [text, setText] = useState("")
 
-  // const handleParkChange = (e) => setPark(text.park_name);
   const handleDateChange = (e) => setDate(e.target.value);
-  const handleActivitiesChange = (e) =>
-    setActivities(activities.push(e.target.value));
-
-  const [text, setText] = useState("");
-
+  
   const handleParkChoice = (selection) => {
-    setText(selection);
-    setPark(text.park_name);
-    console.log(text);
-    console.log(park);
+    setParkCode(selection['park_code']);
   };
+
+  const handleActivityChoice = (selection) => {
+    setText(selection)
+  }
+  
+  useEffect(() => {
+    async function performGetParkData() {
+      const park = await getParkData(parkCode);
+      setActivityData(park.result[0]['activities']);
+    }
+    performGetParkData();
+  }, [parkCode]);
+
+  console.log(text)
 
   return (
     <div className="trekbody">
@@ -50,21 +60,9 @@ export default function AddParkVisit() {
               </Form.Group>
               <Form.Group
                 className="mb-3"
-                controlId="formBasicCheckbox"
-                onChange={handleActivitiesChange}
               >
                 <Form.Label>Activities</Form.Label>
-                <Form.Check
-                  type="checkbox"
-                  value="Arts and Culture"
-                  label="Arts and Culture"
-                />
-                <Form.Check
-                  type="checkbox"
-                  value="Astronomy"
-                  label="Astronomy"
-                />
-                <Form.Check type="checkbox" label="Auto and ATV" />
+                <AutoCompleteActivities activities={activityData} handleActivityChoice={handleActivityChoice}/>
               </Form.Group>
               <Button variant="primary" type="submit">
                 Submit

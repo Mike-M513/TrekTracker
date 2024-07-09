@@ -15,7 +15,7 @@ const ExploreParks = () => {
       <div className="container">
         <div className="row justify-content-center">
           <div className="col">
-            <h1>Explore national parks</h1>
+            <h1>Explore The National Parks</h1>
           </div>
         </div>
         <div className="row">

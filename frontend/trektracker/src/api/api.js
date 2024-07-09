@@ -52,3 +52,20 @@ async function basicFetch(url, payload) {
     const body = await basicFetch(url, payload)
     return body
   }
+
+  export async function postNewVisit(date, user, park, activity) {
+    const url = "http://localhost:8000/visits/new_visit/"
+    const payload = {
+      method: "POST",
+      headers: {
+        "Authorization": `Token ${token}`
+      },
+      body: {
+        date: date,
+        user: user,
+        park: park,
+        activity: activity
+      }
+    }
+    const resp = await basicFetch(url, payload)
+  }
