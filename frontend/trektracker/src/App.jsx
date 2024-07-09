@@ -20,11 +20,16 @@ import UserContext from "./context/UserContext";
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [token, setToken] = useState(null);
+  const [user, setUser] = useState(null)
 
   const handleSetToken = (userToken) => {
     console.log(userToken);
     setToken(userToken);
   };
+
+  const handleSetUser = (user) => {
+    setUser(user)
+  }
 
   const handleSignOut = () => {
     setToken(null);
@@ -75,7 +80,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route
                 path="/sign-in"
-                element={<SignIn handleSetToken={handleSetToken} />}
+                element={<SignIn handleSetToken={handleSetToken} handleSetUser={handleSetUser}/>}
               />
             </Routes>
           </BrowserRouter>

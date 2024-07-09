@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Navigate, json } from "react-router-dom";
 
-export default function SignIn({ handleSetToken }) {
+export default function SignIn({ handleSetToken, handleSetUser }) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [shouldRedirect, setShouldRedirect] = useState(false);
