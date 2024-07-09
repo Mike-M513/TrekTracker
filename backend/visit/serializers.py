@@ -63,7 +63,7 @@ class VisitCreateSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(f'{park} does not exist')
         
         try:
-            activity = Activity.objects.get(activity_code=activity)
+            activity = Activity.objects.get(activity_name=activity)
         except Activity.DoesNotExist:
             raise serializers.ValidationError(f'{activity} does not exist')
 

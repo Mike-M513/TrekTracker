@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { Badge } from "react-bootstrap";
 import AutoCompleteSearch from "../components/AutoCompleteSearch";
 import AutoCompleteActivities from "../components/AutoCompleteActivities";
 import { getParkData } from "../api/api";
@@ -10,27 +11,31 @@ export default function AddParkVisit() {
   const [activityData, setActivityData] = useState([]);
   const [date, setDate] = useState();
   const [activities, setActivities] = useState(null);
-  const [text, setText] = useState("")
+  const [visitDescription, setVisitDescription] = useState("");
+
+  const [text, setText] = useState("");
 
   const handleDateChange = (e) => setDate(e.target.value);
-  
+
+  const handleVisitDescription = (e) => setVisitDescription(e.target.value);
+
   const handleParkChoice = (selection) => {
-    setParkCode(selection['park_code']);
+    setParkCode(selection["park_code"]);
   };
 
   const handleActivityChoice = (selection) => {
-    setText(selection)
-  }
-  
+    setText(selection);
+  };
+
   useEffect(() => {
     async function performGetParkData() {
       const park = await getParkData(parkCode);
-      setActivityData(park.result[0]['activities']);
+      setActivityData(park.result[0]["activities"]);
     }
     performGetParkData();
   }, [parkCode]);
 
-  console.log(text)
+  console.log(visitDescription);
 
   return (
     <div className="trekbody">
@@ -58,11 +63,24 @@ export default function AddParkVisit() {
                   Enter a date in format MM/DD/YYYY. For example, 09/21/2021.
                 </Form.Text>
               </Form.Group>
-              <Form.Group
-                className="mb-3"
-              >
+              <Form.Group className="mb-3">
                 <Form.Label>Activities</Form.Label>
-                <AutoCompleteActivities activities={activityData} handleActivityChoice={handleActivityChoice}/>
+                <AutoCompleteActivities
+                  activities={activityData}
+                  handleActivityChoice={handleActivityChoice}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3">
+                <Form.Label>Visit Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  type="text"
+                  placeholder="Tell Us About Your Trip!"
+                  rows={3}
+                  maxLength={200}
+                  onChange={handleVisitDescription}
+                ></Form.Control>
+                <Badge className="mb-3">{visitDescription.length}/200</Badge>
               </Form.Group>
               <Button variant="primary" type="submit">
                 Submit
