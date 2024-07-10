@@ -1,4 +1,3 @@
-const token = localStorage.getItem("token")
 
 async function basicFetch(url, payload) {
     const res = await fetch(url, payload)
@@ -10,7 +9,7 @@ async function basicFetch(url, payload) {
     const payload = {
       method: "GET",
       headers: {
-        "Authorization": `Token ${token}`
+        "Authorization": `Token ${localStorage.getItem("token")}`
       }  }
     const body = await basicFetch(`http://localhost:8000/natl-parks/${parkCode}`, payload)
     return body
@@ -20,7 +19,7 @@ async function basicFetch(url, payload) {
     const payload = {
       method: "GET",
       headers: {
-        "Authorization": `Token ${token}`
+        "Authorization": `Token ${localStorage.getItem("token")}`
       }
     }
     const body = await basicFetch("http://localhost:8000/parks/parks/", payload)
@@ -31,7 +30,7 @@ async function basicFetch(url, payload) {
     const payload = {
       method: "GET",
       headers: {
-        "Authorization": `Token ${token}`
+        "Authorization": `Token ${localStorage.getItem("token")}`
       }  }
     const body = await basicFetch(`http://localhost:8000/natl-parks/alerts/${parkCode}`, payload)
     return body
@@ -58,7 +57,7 @@ async function basicFetch(url, payload) {
     const payload = {
       method: "POST",
       headers: {
-        "Authorization": `Token ${token}`
+        "Authorization": `Token ${localStorage.getItem("token")}`
       },
       body: {
         date: date,

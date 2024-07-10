@@ -23,7 +23,7 @@ const WeatherCard = ({ name, temperature, tempUnit, forecast, icon }) => {
         </CardContent>
         <CardMedia
           sx={{ height: 150 }}
-          image={`https://api.weather.gov${icon}`}
+          image={`${icon}`}
           title="weather icon"
         />
       </Card>
