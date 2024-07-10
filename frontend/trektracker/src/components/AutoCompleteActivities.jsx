@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { getParks } from "../api/api";
 
 const AutoCompleteActivities = ({ activities, handleActivityChoice }) => {
-
   return (
     <>
       <Autocomplete
@@ -18,9 +17,7 @@ const AutoCompleteActivities = ({ activities, handleActivityChoice }) => {
         disableClearable
         filterSelectedOptions
         sx={{ width: 300 }}
-        renderInput={(params) => (
-          <TextField {...params} label="Activities" />
-        )}
+        renderInput={(params) => <TextField {...params} label="Activities" />}
       />
     </>
   );

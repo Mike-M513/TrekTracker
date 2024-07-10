@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, act } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Badge } from "react-bootstrap";
@@ -10,7 +10,6 @@ export default function AddParkVisit() {
   const [parkCode, setParkCode] = useState(null);
   const [activityData, setActivityData] = useState([]);
   const [date, setDate] = useState();
-  const [activities, setActivities] = useState(null);
   const [visitDescription, setVisitDescription] = useState("");
 
   const [text, setText] = useState("");
@@ -24,7 +23,7 @@ export default function AddParkVisit() {
   };
 
   const handleActivityChoice = (selection) => {
-    setText(selection);
+    setText(selection.map((val) => val.name));
   };
 
   useEffect(() => {
@@ -35,6 +34,35 @@ export default function AddParkVisit() {
     performGetParkData();
   }, [parkCode]);
 
+  const handleSubmit = async (e) => {
+    const visitObj = {
+      date: date,
+      user: localStorage.getItem("Username"),
+      park: parkCode,
+      activity: text,
+      visit_description: visitDescription,
+    };
+    console.log(e);
+    createVisit(visitObj);
+  };
+
+  const createVisit = async (visitObj) => {
+    const url = "http://127.0.0.1:8000/visit/new_visit/";
+    const context = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(visitObj),
+    };
+    const resp = await fetch(url, context);
+    const body = await resp.json();
+  };
+
+  console.log(date);
+  console.log(localStorage.getItem("Username"));
+  console.log(parkCode);
+  console.log(text);
   console.log(visitDescription);
 
   return (
@@ -82,7 +110,7 @@ export default function AddParkVisit() {
                 ></Form.Control>
                 <Badge className="mb-3">{visitDescription.length}/200</Badge>
               </Form.Group>
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" onClick={handleSubmit}>
                 Submit
               </Button>
             </Form>
