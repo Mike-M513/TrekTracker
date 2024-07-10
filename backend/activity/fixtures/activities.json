@@ -12,7 +12,7 @@
     "fields": {
     "activity_code": "13A57703-BB1A-41A2-94B8-53B692EB7238",
     "activity_name": "Astronomy"}
-},
+}
 {
     "model": "activity.Activity",
     "pk": 2,
