@@ -3,6 +3,7 @@ import AutoCompleteSearch from "../components/AutoCompleteSearch";
 import Button from "react-bootstrap/esm/Button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Image from "react-bootstrap/Image";
 
 const ExploreParks = () => {
   const [text, setText] = useState("");

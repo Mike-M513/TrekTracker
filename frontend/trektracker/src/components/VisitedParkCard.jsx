@@ -33,7 +33,7 @@ export default function VisitedParkCard({park}) {
             <Card.Text>
             Activities: {park.activities}
             </Card.Text>
-            <Link to={`/natl-parks/${park.park_code}`} state={{ park: park }}>
+            <Link to={`/explore/${park.park_code}`}>
                 <Button>Visit Park Page</Button>
             </Link>
         </Card.Body>

@@ -23,7 +23,12 @@ export default function AddParkVisit() {
   };
 
   const handleActivityChoice = (selection) => {
-    setText(selection.map((val) => val.name));
+    setText(
+      selection.map((val) => ({
+        activity_name: val.name,
+        activity_code: val.id,
+      }))
+    );
   };
 
   useEffect(() => {
@@ -47,11 +52,12 @@ export default function AddParkVisit() {
   };
 
   const createVisit = async (visitObj) => {
-    const url = "http://127.0.0.1:8000/visit/new_visit/";
+    const url = "http://127.0.0.1:8000/visits/new_visit/";
     const context = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Token ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify(visitObj),
     };
@@ -110,10 +116,10 @@ export default function AddParkVisit() {
                 ></Form.Control>
                 <Badge className="mb-3">{visitDescription.length}/200</Badge>
               </Form.Group>
-              <Button variant="primary" type="submit" onClick={handleSubmit}>
-                Submit
-              </Button>
             </Form>
+            <Button variant="primary" type="submit" onClick={handleSubmit}>
+              Submit
+            </Button>
           </div>
         </div>
       </div>
