@@ -7,7 +7,7 @@ class Visit(models.Model):
     date = models.DateField()
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     park = models.ForeignKey(Park, on_delete=models.CASCADE)
-    activity = models.ForeignKey(Activity, on_delete=models.CASCADE)
+    activity = models.ManyToManyField(Activity)
     visit_description = models.TextField(max_length=200)
 
     def __str__(self):

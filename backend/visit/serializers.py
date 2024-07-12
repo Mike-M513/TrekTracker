@@ -24,7 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class VisitSerializer(serializers.ModelSerializer):
     park = serializers.SerializerMethodField()
-    activity = serializers.SerializerMethodField()
+    activity = ActivitySerializer(many=True)
     user = serializers.SerializerMethodField()
 
     class Meta:
@@ -45,7 +45,7 @@ class VisitSerializer(serializers.ModelSerializer):
     
 class VisitCreateSerializer(serializers.ModelSerializer):
     park = serializers.CharField(write_only=True)
-    activity = serializers.CharField(write_only=True)
+    activity = ActivitySerializer(many=True)
     user = serializers.CharField(write_only=True)
 
     class Meta:
@@ -54,23 +54,28 @@ class VisitCreateSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         park = validated_data.pop('park')
-        activity = validated_data.pop('activity')
+        activities = validated_data.pop('activity')
         user = validated_data.pop('user')
+        validated_activities = []
 
         try:
             park = Park.objects.get(park_code=park)
         except Park.DoesNotExist:
             raise serializers.ValidationError(f'{park} does not exist')
         
-        try:
-            activity = Activity.objects.get(activity_name=activity)
-        except Activity.DoesNotExist:
-            raise serializers.ValidationError(f'{activity} does not exist')
+        for activity in activities:
+            try:
+                temp_activity = Activity.objects.get(activity_name=activity['activity_name'])
+                validated_activities.append(temp_activity)
+            except Activity.DoesNotExist:
+                raise serializers.ValidationError(f'{activity} does not exist')
+            
 
         try:
             user = CustomUser.objects.get(username=user)
         except CustomUser.DoesNotExist:
             raise serializers.ValidationError(f'{user} does not exist')
         
-        visit = Visit.objects.create(park=park, activity=activity, user=user, **validated_data)
+        visit = Visit.objects.create(park=park, user=user, **validated_data)
+        visit.activity.set(validated_activities)
         return visit
