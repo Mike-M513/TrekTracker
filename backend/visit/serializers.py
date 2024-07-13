@@ -20,7 +20,7 @@ class ActivitySerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = '__all__'
+        fields = ['username']
 
 class VisitSerializer(serializers.ModelSerializer):
     park = serializers.SerializerMethodField()
