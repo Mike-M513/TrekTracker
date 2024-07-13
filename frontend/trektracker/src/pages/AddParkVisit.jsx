@@ -1,18 +1,24 @@
-import { useState, useEffect, act } from "react";
+import { useState, useEffect, useRef } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Badge } from "react-bootstrap";
 import AutoCompleteSearch from "../components/AutoCompleteSearch";
 import AutoCompleteActivities from "../components/AutoCompleteActivities";
 import { getParkData } from "../api/api";
+import { useNavigate } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast, Slide } from "react-toastify";
 
 export default function AddParkVisit() {
   const [parkCode, setParkCode] = useState(null);
   const [activityData, setActivityData] = useState([]);
   const [date, setDate] = useState();
   const [visitDescription, setVisitDescription] = useState("");
-
   const [text, setText] = useState("");
+  const [redirect, setRedirect] = useState(false);
+
+  const autoCompleteSearchRef = useRef(null);
+  const autoCompleteActivitiesRef = useRef(null);
 
   const handleDateChange = (e) => setDate(e.target.value);
 
@@ -40,6 +46,7 @@ export default function AddParkVisit() {
   }, [parkCode]);
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
     const visitObj = {
       date: date,
       user: localStorage.getItem("Username"),
@@ -48,7 +55,52 @@ export default function AddParkVisit() {
       visit_description: visitDescription,
     };
     console.log(e);
-    createVisit(visitObj);
+    const success = await createVisit(visitObj);
+    if (success) {
+      resetForm();
+      toast.success("Visit has been added👍", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Slide,
+      });
+    }
+  };
+
+  const handleSecondarySubmit = async (e) => {
+    e.preventDefault();
+    const visitObj = {
+      date: date,
+      user: localStorage.getItem("Username"),
+      park: parkCode,
+      activity: text,
+      visit_description: visitDescription,
+    };
+    const success = await createVisit(visitObj);
+    if (success) {
+      resetForm();
+      setRedirect(true);
+    }
+  };
+
+  const resetForm = () => {
+    setParkCode(null);
+    setActivityData([]);
+    setDate("");
+    setVisitDescription("");
+    setText("");
+
+    if (autoCompleteSearchRef.current) {
+      autoCompleteSearchRef.current.clear();
+    }
+    if (autoCompleteActivitiesRef.current) {
+      autoCompleteActivitiesRef.current.clear();
+    }
   };
 
   const createVisit = async (visitObj) => {
@@ -62,17 +114,22 @@ export default function AddParkVisit() {
       body: JSON.stringify(visitObj),
     };
     const resp = await fetch(url, context);
-    const body = await resp.json();
+    if (resp.ok) {
+      return true;
+    }
+    return false;
   };
+  const navigate = useNavigate();
 
-  console.log(date);
-  console.log(localStorage.getItem("Username"));
-  console.log(parkCode);
-  console.log(text);
-  console.log(visitDescription);
+  useEffect(() => {
+    if (redirect) {
+      navigate("/tracker");
+    }
+  }, [redirect, navigate]);
 
   return (
     <div className="trekbody">
+      <ToastContainer />
       <div className="container">
         <div className="row">
           <div className="col">
@@ -84,13 +141,17 @@ export default function AddParkVisit() {
             <Form>
               <Form.Group className="mb-3">
                 <Form.Label>Park name</Form.Label>
-                <AutoCompleteSearch handleParkChoice={handleParkChoice} />
+                <AutoCompleteSearch
+                  handleParkChoice={handleParkChoice}
+                  ref={autoCompleteSearchRef}
+                />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Date visited</Form.Label>
                 <Form.Control
                   type="date"
                   placeholder="Enter date"
+                  value={date}
                   onChange={handleDateChange}
                 />
                 <Form.Text className="text-muted">
@@ -102,6 +163,7 @@ export default function AddParkVisit() {
                 <AutoCompleteActivities
                   activities={activityData}
                   handleActivityChoice={handleActivityChoice}
+                  ref={autoCompleteActivitiesRef}
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -112,14 +174,41 @@ export default function AddParkVisit() {
                   placeholder="Tell Us About Your Trip!"
                   rows={3}
                   maxLength={200}
+                  value={visitDescription}
                   onChange={handleVisitDescription}
                 ></Form.Control>
                 <Badge className="mb-3">{visitDescription.length}/200</Badge>
               </Form.Group>
             </Form>
-            <Button variant="primary" type="submit" onClick={handleSubmit}>
-              Submit
-            </Button>
+            <div className="d-flex">
+              <Button
+                variant="primary"
+                type="button"
+                onClick={handleSubmit}
+                className="flex-grow-1 mx-1"
+              >
+                Submit & Add New Visit
+              </Button>
+              <br />
+              <Button
+                variant="primary"
+                type="button"
+                onClick={handleSecondarySubmit}
+                className="flex-grow-1 mx-1"
+              >
+                Submit
+              </Button>
+              <br />
+              <br />
+              <Button
+                variant="danger"
+                type="button"
+                onClick={() => navigate(-1)}
+                className="flex-grow-1 mx-1"
+              >
+                Cancel
+              </Button>
+            </div>
           </div>
         </div>
       </div>
