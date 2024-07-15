@@ -18,7 +18,7 @@ export default function Tracker() {
                     </div>
                     <div className="col-3">
                         <Link to="/addvisit">
-                            <Button>Add Park Visit</Button>
+                            <Button type="button" className="full-btn">Add Park Visit</Button>
                         </Link>
                     </div>
                 </div>

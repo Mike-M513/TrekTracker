@@ -10,9 +10,9 @@ export default function ListVisitedParks() {
 
   const createParkList = () => {
     return visitedParks.map((park, index) => (
-      <div className="col">
+       <div className="col-4">
         <VisitedParkCard key={index} park={park} />
-      </div>
+        </div>
     ));
   };
 

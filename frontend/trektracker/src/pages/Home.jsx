@@ -15,7 +15,7 @@ export default function Home() {
             <Link to="/tracker">
               <Button
                 type="button"
-                className="btn btn-primary btn-lg btn-block"
+                className="full-btn btn btn-primary btn-lg btn-block"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@ export default function Home() {
             <Link to="/explore">
               <Button
                 type="button"
-                className="btn btn-primary btn-lg btn-block"
+                className="full-btn btn btn-primary btn-lg btn-block"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

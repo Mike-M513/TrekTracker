@@ -114,8 +114,7 @@ export default function Register() {
                   </Form>
                   <br></br>
                   <Button
-                    variant="primary"
-                    type="submit"
+                    type="button" className="full-btn btn btn-primary btn-lg btn-block"
                     onClick={handleSubmit}
                   >
                     Submit

@@ -82,6 +82,9 @@ html, body {
   --bs-btn-disabled-color: #fff;
   --bs-btn-disabled-bg: #4C3B4D;
   --bs-btn-disabled-border-color: #4C3B4D;
+}
+
+.full-btn {
   width: 100%;
 }
 
@@ -93,6 +96,10 @@ button a {
 .visitedParkCard {
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.visitedParkCard img {
+  height: 190px;
 }
 
 .editParkCardButton {
@@ -147,4 +154,9 @@ button a {
 
 .MuiCircularProgress-svg {
   color: #4C3B4D;
+}
+
+.bg-primary {
+  --bs-bg-opacity: 1;
+  background-color: #4C3B4D !important
 }

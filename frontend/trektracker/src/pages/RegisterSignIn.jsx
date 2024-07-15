@@ -28,7 +28,7 @@ export default function RegisterSignIn() {
           <div className="row">
             <div className="col">
               <Link to="/register">
-                <Button type="button" className="btn btn-primary btn-lg btn-block">
+                <Button type="button" className="full-btn btn btn-primary btn-lg btn-block">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="50"
@@ -50,7 +50,7 @@ export default function RegisterSignIn() {
             </div>
             <div className="col">
               <Link to="/sign-in">
-                <Button type="button" className="btn btn-primary btn-lg btn-block">
+                <Button type="button" className="full-btn btn btn-primary btn-lg btn-block">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="50"
