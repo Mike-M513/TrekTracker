@@ -34,7 +34,6 @@ const AutoCompleteSearch = forwardRef(({ handleParkChoice }, ref) => {
           setInputValue(newInputValue);
         }}
         disableClearable
-        sx={{ width: 300 }}
         renderInput={(params) => (
           <TextField {...params} label="National Parks" />
         )}

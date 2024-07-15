@@ -41,18 +41,24 @@ const ParkPage = () => {
   }
   return (
     <>
+    <div>
       <Link to={"/explore"}>
-        <Button type="button" className="btn btn-primary btn-lg btn-block">
-          Back
-        </Button>
+          {/* <Button type="button" className="btn btn-primary btn-lg btn-block">
+            Back
+          </Button> */}
       </Link>
       <HeroSection
         image={parkData.images[0]}
-        description={parkData.description}
+        description={parkData.fullName}
       />
-      <OverviewSection park={parkData} />
-      <AlertsSection alerts={parkAlerts} />
-      <WeatherSection lat={parkData.latitude} long={parkData.longitude} />
+    </div>
+    <div className="trekbody">
+      <div className="container">
+        <OverviewSection park={parkData} />
+        <AlertsSection alerts={parkAlerts} />
+        <WeatherSection lat={parkData.latitude} long={parkData.longitude} />
+      </div>
+    </div>
     </>
   );
 };

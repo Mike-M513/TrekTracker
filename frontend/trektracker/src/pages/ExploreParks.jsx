@@ -20,22 +20,18 @@ const ExploreParks = () => {
           </div>
         </div>
         <div className="row">
-          <div className="d-flex">
-            <div className="m-auto">
+          <div className="d-flex flex-column justify-content-center" style={{width: '100%'}}>
+            {/* <div className="m-auto"> */}
               <div className="box p-4 bg-light border rounded">
                 <AutoCompleteSearch handleParkChoice={handleParkChoice} />
               </div>
-              <div>
-                <Link to={`/explore/${text.park_code}`}>
-                  <Button
-                    type="button"
-                    className="btn btn-primary btn-lg btn-block"
-                  >
-                    Search
-                  </Button>
-                </Link>
-              </div>
-            </div>
+              <br></br>
+              <Link to={`/explore/${text.park_code}`}>
+                <Button type="button" className="full-btn btn btn-primary btn-lg btn-block">
+                  Search
+                </Button>
+              </Link>
+            {/* </div> */}
           </div>
         </div>
       </div>

@@ -1,10 +1,24 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
-export default function Navigation() {
+export default function Navigation({ handleUserSignOut }) {
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const handleSignOut = () => {
+    handleClose()
+    localStorage.clear();
+    handleUserSignOut();
+  };
+
   return (
     <Navbar bg="dark" className="treknav">
       <Container>
@@ -31,23 +45,33 @@ export default function Navigation() {
             <Nav.Link as={Link} to="/tracker">
               Tracker
             </Nav.Link>
-            {/* <NavDropdown title="Tracker" id="collapsible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Add Park Visit</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Delete/Update Park Visits
-              </NavDropdown.Item>
-            </NavDropdown> */}
-          </Nav>
-          <Nav>
             <Nav.Link as={Link} to="/explore">
               Explore
             </Nav.Link>
-            <Nav.Link as={Link} to="/sign-out">
+          </Nav>
+          <Nav>
+            <Nav.Link onClick={handleShow}>
               Sign Out
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Sign Out</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to sign out?</Modal.Body>
+        <Modal.Footer>
+          <Link to="/">
+            <Button variant="primary" onClick={handleSignOut}>
+              Confirm Sign Out
+            </Button>
+          </Link>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </Navbar>
   );
 }

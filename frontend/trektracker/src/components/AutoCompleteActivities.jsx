@@ -29,7 +29,6 @@ const AutoCompleteActivities = forwardRef(
           value={selectedActivites}
           disableClearable
           filterSelectedOptions
-          sx={{ width: 300 }}
           renderInput={(params) => <TextField {...params} label="Activities" />}
         />
       </>

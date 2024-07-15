@@ -3,7 +3,7 @@ import React from "react";
 const OverviewSection = ({ park }) => {
   return (
     <div className="overview-section">
-      <h2>{park.fullName}</h2>
+      <h2>Overview</h2>
       <p>{park.description}</p>
       <p>
         Location: {park.addresses[0].city}, {park.addresses[0].stateCode}
