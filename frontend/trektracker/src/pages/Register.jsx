@@ -29,7 +29,7 @@ export default function Register() {
   };
 
   const createUser = async (userObj) => {
-    const url = "http://127.0.0.1:8000/users/register/";
+    const url = `http://${import.meta.env.VITE_BASE_URL}/api/users/register/`;
     const context = {
       method: "POST",
       headers: {
@@ -39,7 +39,6 @@ export default function Register() {
     };
     const resp = await fetch(url, context);
     const body = await resp.json();
-    console.log(resp);
     if (resp.status == 201) {
       setShouldRedirect(true);
     }

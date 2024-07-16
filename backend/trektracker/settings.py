@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^mu@^2ygw9t4tv=6w=@$-8uylx#1d*-f&y=(4ap7l^@#qzajaz'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.getenv("DEBUG") == "True" else False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -85,9 +86,9 @@ WSGI_APPLICATION = 'trektracker.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "trektracker_db",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
+        "NAME": os.getenv("DB_NAME", "trektracker_db"),
+        "USER": os.getenv("DB_USER", "postgres"),
+        "PASSWORD": os.getenv("DB_PASS", "postgres"),
         "HOST": "db",  
         "PORT": 5432,
     }
@@ -147,7 +148,7 @@ REST_FRAMEWORK = {
 AUTH_USER_MODEL = 'user.CustomUser'
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
+    f'http://{"localhost" if os.getenv("DEBUG") == "True" else os.getenv("IP")}',
 ]
 
 CORS_ALLOWED_METHODS = [

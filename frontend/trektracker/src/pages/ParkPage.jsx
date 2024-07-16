@@ -18,7 +18,6 @@ const ParkPage = () => {
   useEffect(() => {
     async function performGetParkData() {
       const park = await getParkData(parkCode);
-      // console.log(park.result[0])
       setParkData(park.result[0]);
     }
     performGetParkData();

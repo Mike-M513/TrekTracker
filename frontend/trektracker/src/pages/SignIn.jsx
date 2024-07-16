@@ -25,7 +25,7 @@ export default function SignIn({ handleSetToken, handleSetUser }) {
   };
 
   const fetchToken = async (userObj) => {
-    const url = "http://127.0.0.1:8000/users/get-token/";
+    const url = `http://${import.meta.env.VITE_BASE_URL}/api/users/get-token/`;
     const context = {
       method: "POST",
       headers: {
@@ -35,12 +35,10 @@ export default function SignIn({ handleSetToken, handleSetUser }) {
     };
     const resp = await fetch(url, context);
     const body = await resp.json();
-    console.log(body.token);
     return body.token;
   };
 
   if (shouldRedirect) {
-    // console.log(shouldRedirect);
     return <Navigate to="/" />;
   } else {
     return (

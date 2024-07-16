@@ -11,7 +11,6 @@ export default function VisitedParkCard({ park }) {
   useEffect(() => {
     async function performGetParkData() {
       const park2 = await getParkData(park.park.park_code);
-      // console.log(park.result[0])
       setParkData(park2.result[0]);
     }
     setTimeout(() => performGetParkData(), 100);

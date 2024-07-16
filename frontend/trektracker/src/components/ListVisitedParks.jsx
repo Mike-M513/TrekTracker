@@ -19,10 +19,8 @@ export default function ListVisitedParks() {
   useEffect(() => {
     async function performGetVisitedParks() {
       // get all visited parks API call
-      console.log("Getting parks...");
       const parks = await getVisitedParks();
       setVisitedParks(parks);
-      console.log(parks);
     }
     if (userToken) {
       performGetVisitedParks();

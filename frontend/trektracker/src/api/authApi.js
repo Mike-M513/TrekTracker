@@ -12,7 +12,7 @@ async function basicFetch(url, payload) {
         "Content-Type": "application/json",
         "Authorization": `Token ${localStorage.getItem('token')}`
       }  }
-    const body = await basicFetch(`http://localhost:8000/visits/visits/${localStorage.getItem('Username')}`, payload)
+    const body = await basicFetch(`http://${import.meta.env.VITE_BASE_URL}/api/visits/visits/${localStorage.getItem('Username')}`, payload)
 
     // dummmy data
   //   const body = [{"name": "Yellowstone", "visit_date": "05-25-21", "activities": "Hiking, swimming"}, 

@@ -54,7 +54,6 @@ export default function AddParkVisit() {
       activity: text,
       visit_description: visitDescription,
     };
-    console.log(e);
     const success = await createVisit(visitObj);
     if (success) {
       resetForm();
@@ -104,7 +103,7 @@ export default function AddParkVisit() {
   };
 
   const createVisit = async (visitObj) => {
-    const url = "http://127.0.0.1:8000/visits/new_visit/";
+    const url = `http://${import.meta.env.VITE_BASE_URL}/api/visits/new_visit/`;
     const context = {
       method: "POST",
       headers: {

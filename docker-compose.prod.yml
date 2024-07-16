@@ -1,33 +1,29 @@
 #########################################
-# The "development" compose file builds 
-# the images locally
+# The "production" compose file builds 
+# on your EC2 instance
 #########################################
 
 version: "3"
 services:
   api:
-    build: ./backend
-    ports:
-      - "8000:8000"
+    image: $DOCKERHUB_UNAME/api-prod:$NEW_VERSION
     environment:
       - SECRET_KEY=$SECRET_KEY
+      - NPS_API_KEY=$NPS_API_KEY
       - DEBUG=$DEBUG
+      - IP=$IP
       - DB_NAME=$POSTGRES_DB
       - DB_USER=$POSTGRES_USER
       - DB_PASS=$POSTGRES_PASSWORD
     depends_on:
       - db
   nginx:
-    build: 
-      context: .
-      dockerfile: ./webserver/Dockerfile
+    image: $DOCKERHUB_UNAME/webserver-prod:$NEW_VERSION
     restart: always
     ports:
       - "80:80"
   db:
     image: postgres:15
-    ports:
-      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
@@ -37,4 +33,3 @@ services:
 
 volumes:
   postgres_data:
-    

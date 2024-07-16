@@ -22,7 +22,6 @@ function App() {
   const [user, setUser] = useState(null)
 
   const handleSetToken = (userToken) => {
-    console.log(userToken);
     setToken(userToken);
   };
 
@@ -33,7 +32,6 @@ function App() {
   const handleSignOut = () => {
     setToken(null);
     setIsAuthenticated(false);
-    console.log(`SET IS AUTHENTUICATED ${isAuthenticated}`);
   };
 
   // const setLocalStorage = () => {
@@ -41,8 +39,6 @@ function App() {
   // };
 
   useEffect(() => {
-    console.log("USING THE USE EFFECT");
-    console.log(token);
     if (localStorage.getItem("token")) {
       setIsAuthenticated(true);
       // setLocalStorage();

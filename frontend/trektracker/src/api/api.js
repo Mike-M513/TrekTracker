@@ -11,7 +11,7 @@ async function basicFetch(url, payload) {
       headers: {
         "Authorization": `Token ${localStorage.getItem("token")}`
       }  }
-    const body = await basicFetch(`http://localhost:8000/natl-parks/${parkCode}`, payload)
+    const body = await basicFetch(`http://${import.meta.env.VITE_BASE_URL}/api/natl-parks/${parkCode}`, payload)
     return body
   }
 
@@ -22,7 +22,7 @@ async function basicFetch(url, payload) {
         "Authorization": `Token ${localStorage.getItem("token")}`
       }
     }
-    const body = await basicFetch("http://localhost:8000/parks/parks/", payload)
+    const body = await basicFetch(`http://${import.meta.env.VITE_BASE_URL}/api/parks/parks/`, payload)
     return body
   }
 
@@ -32,7 +32,7 @@ async function basicFetch(url, payload) {
       headers: {
         "Authorization": `Token ${localStorage.getItem("token")}`
       }  }
-    const body = await basicFetch(`http://localhost:8000/natl-parks/alerts/${parkCode}`, payload)
+    const body = await basicFetch(`http://${import.meta.env.VITE_BASE_URL}/api/natl-parks/alerts/${parkCode}`, payload)
     return body
   }
 
@@ -50,21 +50,4 @@ async function basicFetch(url, payload) {
     }
     const body = await basicFetch(url, payload)
     return body
-  }
-
-  export async function postNewVisit(date, user, park, activity) {
-    const url = "http://localhost:8000/visits/new_visit/"
-    const payload = {
-      method: "POST",
-      headers: {
-        "Authorization": `Token ${localStorage.getItem("token")}`
-      },
-      body: {
-        date: date,
-        user: user,
-        park: park,
-        activity: activity
-      }
-    }
-    const resp = await basicFetch(url, payload)
   }

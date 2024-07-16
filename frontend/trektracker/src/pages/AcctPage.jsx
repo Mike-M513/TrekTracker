@@ -15,7 +15,7 @@ const getToken = () => {
 const getUserData = async () => {
   const token = getToken();
   try {
-    const response = await fetch("http://127.0.0.1:8000/users/user/", {
+    const response = await fetch(`http://${import.meta.env.VITE_BASE_URL}/api/users/user/`, {
       headers: {
         Authorization: `${token}`,
         "Content-Type": "application/json",
@@ -37,7 +37,7 @@ const updatePassword = async (newPassword) => {
   const token = getToken();
   try {
     const response = await fetch(
-      "http://127.0.0.1:8000/users/update-password/",
+      `http://${import.meta.env.VITE_BASE_URL}/api/users/update-password/`,
       {
         method: "PUT",
         headers: {
@@ -59,7 +59,7 @@ const updatePassword = async (newPassword) => {
 const updateEmail = async (newEmail) => {
   const token = getToken();
   try {
-    const response = await fetch("http://127.0.0.1:8000/users/update-email/", {
+    const response = await fetch(`http://${import.meta.env.VITE_BASE_URL}/api/users/update-email/`, {
       method: "PUT",
       headers: {
         Authorization: `${token}`,
@@ -79,7 +79,7 @@ const updateEmail = async (newEmail) => {
 const deleteUser = async () => {
   const token = getToken();
   try {
-    const response = await fetch("http://127.0.0.1:8000/users/delete-user/", {
+    const response = await fetch(`http://${import.meta.env.VITE_BASE_URL}/api/users/delete-user/`, {
       method: "DELETE",
       headers: {
         Authorization: `${token}`,
