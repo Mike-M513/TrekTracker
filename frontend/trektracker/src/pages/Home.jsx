@@ -1,7 +1,31 @@
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/esm/Button";
+import { useState, useEffect } from "react";
+import { getParks, getParkData } from "../api/api";
+import HeroSection from "../components/HeroSection";
 
 export default function Home() {
+  const [nationalParks, setNationalParks] = useState([]);
+  const [parkData, setParkData] = useState();
+
+  useEffect(() => {
+    async function performGetParks() {
+      const parks = await getParks();
+      setNationalParks(parks);
+    }
+    performGetParks();
+  }, []);
+
+  useEffect(() => {
+    async function performGetParkData() {
+      const randomParkIndex = Math.floor(Math.random() * nationalParks.length);
+      const parkCode = nationalParks[randomParkIndex].park_code;
+      const park = await getParkData(parkCode);
+      setParkData(park.result[0]);
+    }
+    performGetParkData();
+  }, [nationalParks]);
+
   return (
     <div className="trekbody">
       <div className="container">
@@ -10,6 +34,13 @@ export default function Home() {
             <h1>Home</h1>
           </div>
         </div>
+        {parkData && (
+          <HeroSection
+            section={"home-page"}
+            image={parkData.images[Math.floor(Math.random() * parkData.images.length)]}
+            description={`Explore Beautiful ${parkData.fullName}!`}
+          />
+        )}
         <div className="row">
           <div className="col">
             <Link to="/tracker">

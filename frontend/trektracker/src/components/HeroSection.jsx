@@ -1,11 +1,8 @@
 import React from "react";
 
-const HeroSection = ({ image, description }) => {
+const HeroSection = ({ image, description, section = "hero-section" }) => {
   return (
-    <div
-      className="hero-section"
-      style={{ backgroundImage: `url(${image.url})` }}
-    >
+    <div className={section} style={{ backgroundImage: `url(${image.url})` }}>
       <div className="hero-content">
         <h1>{description}</h1>
       </div>

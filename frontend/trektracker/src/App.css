@@ -116,6 +116,19 @@ button a {
   right: 5px;
 }
 
+.home-page {
+  height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #89B6A5;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+}
+
 .hero-section {
   height: 600px;
   background-size: cover;
@@ -126,6 +139,7 @@ button a {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 2rem;
 }
 
 .hero-content {
@@ -160,3 +174,17 @@ button a {
   --bs-bg-opacity: 1;
   background-color: #4C3B4D !important
 }
+
+.explore-map {
+  height: 900px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: inherit;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+

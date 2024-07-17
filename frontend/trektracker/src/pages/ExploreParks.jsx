@@ -3,7 +3,6 @@ import AutoCompleteSearch from "../components/AutoCompleteSearch";
 import Button from "react-bootstrap/esm/Button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Image from "react-bootstrap/Image";
 
 const ExploreParks = () => {
   const [text, setText] = useState("");
@@ -20,20 +19,30 @@ const ExploreParks = () => {
           </div>
         </div>
         <div className="row">
-          <div className="d-flex flex-column justify-content-center" style={{width: '100%'}}>
+          <div
+            className="d-flex flex-column justify-content-center"
+            style={{ width: "100%" }}
+          >
             {/* <div className="m-auto"> */}
-              <div className="box p-4 bg-light border rounded">
-                <AutoCompleteSearch handleParkChoice={handleParkChoice} />
-              </div>
-              <br></br>
-              <Link to={`/explore/${text.park_code}`}>
-                <Button type="button" className="full-btn btn btn-primary btn-lg btn-block">
-                  Search
-                </Button>
-              </Link>
+            <div className="box p-4 bg-light border rounded">
+              <AutoCompleteSearch handleParkChoice={handleParkChoice} />
+            </div>
+            <br></br>
+            <Link to={`/explore/${text.park_code}`}>
+              <Button
+                type="button"
+                className="full-btn btn btn-primary btn-lg btn-block"
+              >
+                Search
+              </Button>
+            </Link>
             {/* </div> */}
           </div>
         </div>
+        <div
+          className="explore-map"
+          style={{ backgroundImage: `url(${'./national-parks-map.png'})` }}
+        ></div>
       </div>
     </div>
   );

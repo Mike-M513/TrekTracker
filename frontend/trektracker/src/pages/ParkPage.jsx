@@ -46,10 +46,10 @@ const ParkPage = () => {
             Back
           </Button> */}
       </Link>
-      <HeroSection
-        image={parkData.images[0]}
+      {parkData && <HeroSection
+        image={parkData.images[Math.floor(Math.random() * parkData.images.length)]}
         description={parkData.fullName}
-      />
+      />}
     </div>
     <div className="trekbody">
       <div className="container">
